@@ -1,2 +1,2 @@
-# my_projects1
-My first Project Repo
+# Projects:
+BangLang Language: This is a very quick easy language same as python but in bangla language.
