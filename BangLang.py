@@ -1,6 +1,7 @@
 import argparse
 
 # BangLang for coding in bengali 
+# I know it's very simple and slow. But it was my dream project.
 অনুবাদ = {
     # Keywords
     'পদ্ধতি': 'def',
@@ -32,6 +33,7 @@ import argparse
     'স্থানীয়': 'nonlocal',
 
     # Built-in defs
+    # Please add other functions.
     'লিখ': 'print',
     'দৈর্ঘ্য': 'len',
     'পরিসীমা': 'range',
