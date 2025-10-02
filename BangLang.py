@@ -1,8 +1,15 @@
-import argparse
+import argparse, sys
+"""BangLang
+********
+
+This is a program, by Surya. by using this program you can run python programs in bengali.
+
+Repository: https://github.com/Surya-net/my_prjects/
+Devoloper: Suryalal Singha GitHub: www.github.com/Surya-net Email: surya.geek.email@gmail.com"""
 
 # BangLang for coding in bengali 
 # I know it's very simple and slow. But it was my dream project.
-অনুবাদ = {
+dictionary = {
     # Keywords
     'পদ্ধতি': 'def',
     'ফিরাও': 'return',
@@ -48,11 +55,11 @@ import argparse
     'ধরন_কি': 'isinstance'
 }
 
-def চালাও(কোড):
+def run(code):
     
-    for bn, py in অনুবাদ.items():
-        কোড = কোড.replace(bn, py)
-    exec(কোড)
+    for bn, py in dictionary.items():
+        code = code.replace(bn, py)
+    exec(code)
 
 def main():
     parser = argparse.ArgumentParser(description="BangLang: Bengali Python Interpreter")
@@ -60,12 +67,17 @@ def main():
     args = parser.parse_args()
 
     if args.code:
+        if not ".bang" in arg.code:
+            print("দয়া করে '.bang' এক্সটেনশনটি ব্যবহার করে আবার চেষ্টা করুন।")
+            sys.exit(1)
         with open(args.code, 'r', encoding='utf-8') as f:
             code = f.read()
-        চালাও(code)
+        run(code)
     else:
-        print("কোডের ফাইলটি এন্টার করুন: banglang --code hello.bang")
+        print("কোডের ফাইলটি এভাবে এন্টার করুন: banglang --code hello.bang")
 
 if __name__ == "__main__":
-  # Fully Made by Surya (yeah me bro!)
+    # Fully Made by Surya (yeah me bro!)
+    # If you're bengali please contribute to my project.
     main()
+    # This is a experimental project so please don't judge.
