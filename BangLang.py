@@ -1,4 +1,7 @@
 import argparse, sys
+import tokenize
+import io
+
 """BangLang
 ********
 
@@ -40,7 +43,6 @@ dictionary = {
     'স্থানীয়': 'nonlocal',
 
     # Built-in defs
-    # Please add other functions.
     'লিখ': 'print',
     'দৈর্ঘ্য': 'len',
     'পরিসীমা': 'range',
@@ -56,10 +58,20 @@ dictionary = {
 }
 
 def run(code):
+    """
+    Converts Bengali keywords to Python using tokenization to avoid replacing inside strings/comments.
+    """
+    result_tokens = []
+    tokens = list(tokenize.generate_tokens(io.StringIO(code).readline))
     
-    for bn, py in dictionary.items():
-        code = code.replace(bn, py)
-    exec(code)
+    for toknum, tokval, start, end, line in tokens:
+        if toknum == tokenize.NAME and tokval in dictionary:
+            # Replace Bengali keyword
+            tokval = dictionary[tokval]
+        result_tokens.append((toknum, tokval))
+    
+    python_code = tokenize.untokenize(result_tokens)
+    exec(python_code)
 
 def main():
     parser = argparse.ArgumentParser(description="BangLang: Bengali Python Interpreter")
