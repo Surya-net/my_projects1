@@ -67,7 +67,7 @@ def main():
     args = parser.parse_args()
 
     if args.code:
-        if not ".bang" in arg.code:
+        if not ".bang" in args.code:
             print("দয়া করে '.bang' এক্সটেনশনটি ব্যবহার করে আবার চেষ্টা করুন।")
             sys.exit(1)
         with open(args.code, 'r', encoding='utf-8') as f:
